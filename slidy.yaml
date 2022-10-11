@@ -1,0 +1,59 @@
+slidy: '1'
+variables:
+  module: crud
+  primaryUseCase: create
+  2UseCase: show
+  3UseCase: index
+  4UseCase: delete
+  5UseCase: update
+
+scripts:
+  runner: 
+    name: "Runner"
+    description: "Execute build_runner"
+    run: fvm flutter pub run build_runner build --delete-conflicting-outputs
+
+  cleanup:
+    description: "cleanup project"
+    steps:
+      - name: "Clean"
+        run: fvm flutter clean
+
+      - name: "GetPackages"
+        description: "Get packages"
+        run: fvm flutter pub get
+
+  generateModule:
+    name: "Generate Module"
+    description: "Generate a new Module with Local and Remote DataSources, Ropository, UseCase, Page and Bloc"
+    steps:
+      - name: "Generate Module"
+        run: slidy g m modules/${Local.var.module}
+      
+      - name: "Generate Local DataSource"
+        run: slidy g d modules/${Local.var.module}/data/datasource/${Local.var.module}_local
+      
+      - name: "Generate Remote DataSource"
+        run: slidy g d modules/${Local.var.module}/data/datasource/${Local.var.module}_remote
+      
+      - name: "Generate Repository"
+        run: slidy g r modules/${Local.var.module}/domain/repositories/${Local.var.module}
+      
+      - name: "Generate Primary UseCase"
+        run: slidy g u modules/${Local.var.module}/domain/usecases/${Local.var.primaryUseCase}
+      - name: "Generate Primary UseCase"
+        run: slidy g u modules/${Local.var.module}/domain/usecases/${Local.var.2UseCase}
+      - name: "Generate Primary UseCase"
+        run: slidy g u modules/${Local.var.module}/domain/usecases/${Local.var.3UseCase}
+      - name: "Generate Primary UseCase"
+        run: slidy g u modules/${Local.var.module}/domain/usecases/${Local.var.4UseCase}
+      - name: "Generate Primary UseCase"
+        run: slidy g u modules/${Local.var.module}/domain/usecases/${Local.var.5UseCase}
+      
+      - name: "Generate Primary Page"
+        run: slidy g p modules/${Local.var.module}/presentation/pages/${Local.var.module}
+      
+      - name: "Generate Primary Bloc"
+        run: slidy g b modules/${Local.var.module}/presentation/bloc/${Local.var.module}
+      
+      
