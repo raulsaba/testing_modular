@@ -1,13 +1,19 @@
 # testing_modular
 
 A project created to pratice and test Flutter Modular from flutterando using blocs and a basic crud app.
+
 https://pub.dev/packages/flutter_modular
+
 https://modular.flutterando.com.br/
 
 Flutter version: 3.3.3
+
 Slidy version: 4.0.3
+
 fvm version: 2.4.1
+
 flutter_modular version: 5.0.3
+
 
 # using fvm
 
