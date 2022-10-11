@@ -17,7 +17,7 @@ flutter_modular version: 5.0.3
 
 # using fvm
 
-generate the folder .fvm using the required flutter version
+generate the .fvm folder using the command and saying which flutter version you want in this project
 
 e.g. 
 ```
